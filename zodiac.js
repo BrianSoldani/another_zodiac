@@ -8,7 +8,7 @@ var createRow = function(data) {
 
     // Methods run on jQuery selectors return the selector they we run on
     // This is why we can create and save a reference to a td in the same statement we update its text
-    var titleTd = $("<td>").text(data.name);
+    var titleTd = $("<td>").text(data);
     var yearTd = $("<td>").text(data.compatibility);
     var iconTd = $("<td>").text(data.ruling_planet);
     var actorsTd = $("<td>").text(data.good_traits);
@@ -26,8 +26,9 @@ var createRow = function(data) {
   };
 
   // The search OMDB function takes a movie, searches the omdb api for it, and then passes the data to createRow
-  var searchSign = function(sign) {
-    var queryURL = "https://zodiacal.herokuapp.com/" + sign;
+  var gogetit = function() {
+    var queryURL = "http://numbersapi.com/02/13/date";
+    console.log(queryURL);
     $.ajax({
       url: queryURL,
       method: "GET"
@@ -35,8 +36,23 @@ var createRow = function(data) {
       createRow(response);
     });
   };
+  
+  gogetit();
 
-  // Search the OMDB API for the following movies, and append table rows for each
-  searchSign("Aries");
-//   searchOMDB("The Little Mermaid");
-//   searchOMDB("The Lion King");
+
+var d = new Date(1974, 04, 16);
+function _calculateAge(d) { // birthday "d" is a date
+    var ageDifMs = Date.now() - d.getTime();
+    var ageDate = new Date(ageDifMs); // miliseconds from epoch
+    return Math.abs(ageDate.getUTCFullYear() - 1970);
+}
+
+_calculateAge(d);
+console.log(_calculateAge(d))
+
+const proxyurl = "https://cors-anywhere.herokuapp.com/";
+const url = "http://numbersapi.com/02/13/date"; // site that doesn’t send Access-Control-*
+fetch(proxyurl + url) // https://cors-anywhere.herokuapp.com/https://example.com
+.then(response => response.text())
+.then(contents => console.log(contents))
+.catch(() => console.log("Can’t access " + url + " response. Blocked by browser?"))
