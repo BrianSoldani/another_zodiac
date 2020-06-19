@@ -26,32 +26,39 @@ var createRow = function(data) {
   };
 
   // The search OMDB function takes a movie, searches the omdb api for it, and then passes the data to createRow
-  var gogetit = function() {
-    var queryURL = "http://numbersapi.com/02/13/date";
-    console.log(queryURL);
-    $.ajax({
-      url: queryURL,
-      method: "GET"
-    }).then(function(response) {
-      createRow(response);
-    });
-  };
+//   var gogetit = function() {
+//     var queryURL = "http://numbersapi.com/02/13/date";
+//     console.log(queryURL);
+//     $.ajax({
+//       url: queryURL,
+//       method: "GET"
+//     }).then(function(response) {
+//       createRow(response);
+//     });
+//   };
   
-  gogetit();
+//   gogetit();
 
 
-var d = new Date(1974, 04, 16);
-function _calculateAge(d) { // birthday "d" is a date
-    var ageDifMs = Date.now() - d.getTime();
-    var ageDate = new Date(ageDifMs); // miliseconds from epoch
-    return Math.abs(ageDate.getUTCFullYear() - 1970);
-}
+// var d = new Date(1974, 04, 16);
+// function _calculateAge(d) { // birthday "d" is a date
+//     var ageDifMs = Date.now() - d.getTime();
+//     var ageDate = new Date(ageDifMs); // miliseconds from epoch
+//     return Math.abs(ageDate.getUTCFullYear() - 1970);
+// }
 
-_calculateAge(d);
-console.log(_calculateAge(d))
+// _calculateAge(d);
+// console.log(_calculateAge(d))
 
 const proxyurl = "https://cors-anywhere.herokuapp.com/";
 const url = "http://numbersapi.com/02/13/date"; // site that doesn’t send Access-Control-*
+fetch(proxyurl + url) // https://cors-anywhere.herokuapp.com/https://example.com
+.then(response => response.text())
+.then(contents => console.log(contents))
+.catch(() => console.log("Can’t access " + url + " response. Blocked by browser?"))
+
+const proxyurl = "https://cors-anywhere.herokuapp.com/";
+const url = "https://zodiacal.herokuapp.com/aries"; // site that doesn’t send Access-Control-*
 fetch(proxyurl + url) // https://cors-anywhere.herokuapp.com/https://example.com
 .then(response => response.text())
 .then(contents => console.log(contents))
