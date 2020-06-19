@@ -8,10 +8,10 @@ var createRow = function(data) {
 
     // Methods run on jQuery selectors return the selector they we run on
     // This is why we can create and save a reference to a td in the same statement we update its text
-    var titleTd = $("<td>").text(data.name);
-    var yearTd = $("<td>").text(data.compatibility);
-    var iconTd = $("<td>").text(data.ruling_planet);
-    var actorsTd = $("<td>").text(data.good_traits);
+    var titleTd = $("<td>").text(data);
+    var yearTd = $("<td>").text(data);
+    var iconTd = $("<td>").text(data[0].name);
+    var actorsTd = $("<td>").text(data[0].mental_traits);
 
     // var iconToUse = data.list[0].weather[0].icon;
 
@@ -27,14 +27,14 @@ var createRow = function(data) {
 
 
   var gogetit = function() {
-    var queryURL = "https://zodiacal.herokuapp.com/aries";
+    var queryURL = "https://cors-anywhere.herokuapp.com/https://zodiacal.herokuapp.com/aries";
     console.log(queryURL);
     $.ajax({
       url: queryURL,
-      method: "GET",
-      dataType: "json",
-      headers: {
-        "origin,x-requested-with": "xhr"}
+      // method: "GET",
+      // dataType: "json",
+      // headers: {
+      //   "origin,x-requested-with": "xhr"}
     }).then(function(response) {
       createRow(response);
     });
@@ -43,18 +43,21 @@ var createRow = function(data) {
   gogetit();
 
   // The search OMDB function takes a movie, searches the omdb api for it, and then passes the data to createRow
-  // var gogetit = function() {
-  //   var queryURL = "http://numbersapi.com/02/13/date";
-  //   console.log(queryURL);
-  //   $.ajax({
-  //     url: queryURL,
-  //     method: "GET"
-  //   }).then(function(response) {
-  //     createRow(response);
-  //   });
-  // };
+  var gogetit2 = function() {
+    var queryURL = "https://cors-anywhere.herokuapp.com/http://numbersapi.com/02/13/date";
+    console.log(queryURL);
+    $.ajax({
+      url: queryURL,
+      method: "GET",
+      // dataType: "json",
+      // headers: {
+      //   "origin,x-requested-with": "xhr"}
+    }).then(function(response) {
+      createRow(response);
+    });
+  };
   
-  // gogetit();
+  gogetit2();
 
 
 // var d = new Date(1974, 04, 16);
@@ -81,3 +84,19 @@ fetch(proxyurl + url2) // https://cors-anywhere.herokuapp.com/https://example.co
 .then(response => response.text())
 .then(contents => console.log(contents))
 .catch(() => console.log("Can’t access " + url + " response. Blocked by browser?"))
+
+
+// var settings = {
+// 	async: true,
+// 	crossDomain: true,
+// 	url: "https://horoscopeapi-horoscope-v1.p.rapidapi.com/daily?date=today",
+// 	method: "GET",
+// 	headers: {
+// 		"x-rapidapi-host": "horoscopeapi-horoscope-v1.p.rapidapi.com",
+// 	  "x-rapidapi-key": "d09dcee7c8msh7b92a71d71d162ap1b2e2djsneb86e45371ec"
+// 	}
+// }
+
+// $.ajax(settings).done(function (response) {
+// 	console.log(response);
+// });
