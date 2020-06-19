@@ -1,7 +1,7 @@
 
 
 
-// The createRow function takes data returned by OMDB and appends the table data to the tbody
+// The createRow function takes data returned by API and appends the table data to the tbody
 var createRow = function(data) {
     // Create a new table row element
     var tRow = $("<tr>");
@@ -67,7 +67,7 @@ var createRow = function(data) {
 // _calculateAge(d);
 // console.log(_calculateAge(d))
 
-// const proxyurl = "https://cors-anywhere.herokuapp.com/";
+ const proxyurl = "https://cors-anywhere.herokuapp.com/";
 // const url = "http://numbersapi.com/02/13/date"; // site that doesn’t send Access-Control-*
 // fetch(proxyurl + url) // https://cors-anywhere.herokuapp.com/https://example.com
 // .then(response => response.text())
