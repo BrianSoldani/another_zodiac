@@ -31,8 +31,8 @@ var createRow = function(data) {
     console.log(queryURL);
     $.ajax({
       url: queryURL,
-      // method: "GET",
-      // dataType: "json",
+      method: "GET",
+      dataType: "json",
       // headers: {
       //   "origin,x-requested-with": "xhr"}
     }).then(function(response) {
